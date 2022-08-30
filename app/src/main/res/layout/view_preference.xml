@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/preference_desc"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:textColor="@color/tv_text_summary"
             android:text="@string/default1"
             android:layout_width="match_parent"
