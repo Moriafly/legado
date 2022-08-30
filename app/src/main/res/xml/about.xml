@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <io.legado.app.lib.prefs.Preference
+        android:key="moriafly"
+        android:summary="基于 https://github.com/gedoor/legado 开源项目，本软件遵循此项目 GPL 3 开源协议，开源链接 https://github.com/Moriafly/legado，修改的代码部分请查看代码提交，本作者拥有对部分修改代码的版权"
+        android:title="@string/about"
+        app:iconSpaceReserved="false" />
+
+    <io.legado.app.lib.prefs.Preference
         android:key="contributors"
         android:summary="@string/contributors_summary"
         android:title="@string/contributors"
@@ -24,6 +30,7 @@
 
     <io.legado.app.lib.prefs.PreferenceCategory
         android:title="@string/contact"
+        app:isPreferenceVisible="false"
         app:allowDividerAbove="true"
         app:allowDividerBelow="false"
         app:iconSpaceReserved="false"

@@ -21,26 +21,26 @@ class AboutActivity : BaseActivity<ActivityAboutBinding>() {
     override val binding by viewBinding(ActivityAboutBinding::inflate)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        binding.llAbout.background = filletBackground
+        // binding.llAbout.background = filletBackground
         val fTag = "aboutFragment"
         var aboutFragment = supportFragmentManager.findFragmentByTag(fTag)
         if (aboutFragment == null) aboutFragment = AboutFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.fl_fragment, aboutFragment, fTag)
             .commit()
-        binding.tvAppSummary.post {
-            kotlin.runCatching {
-                val span = ForegroundColorSpan(accentColor)
-                val spannableString = SpannableString(binding.tvAppSummary.text)
-                val gzh = getString(R.string.legado_gzh)
-                val start = spannableString.indexOf(gzh)
-                spannableString.setSpan(
-                    span, start, start + gzh.length,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                binding.tvAppSummary.text = spannableString
-            }
-        }
+//        binding.tvAppSummary.post {
+//            kotlin.runCatching {
+//                val span = ForegroundColorSpan(accentColor)
+//                val spannableString = SpannableString(binding.tvAppSummary.text)
+//                val gzh = getString(R.string.legado_gzh)
+//                val start = spannableString.indexOf(gzh)
+//                spannableString.setSpan(
+//                    span, start, start + gzh.length,
+//                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                )
+//                binding.tvAppSummary.text = spannableString
+//            }
+//        }
     }
 
     override fun onCompatCreateOptionsMenu(menu: Menu): Boolean {
