@@ -156,6 +156,10 @@ class TitleBar @JvmOverloads constructor(
             stateListAnimator = null
             elevation = context.elevation
         }
+
+        // Moriafly 消去阴影
+        elevation = 0f
+
         a.recycle()
     }
 
