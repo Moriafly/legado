@@ -69,20 +69,20 @@ class CoverImageView @JvmOverloads constructor(
         width = getWidth().toFloat()
         height = getHeight().toFloat()
         filletPath.reset()
-        if (width > 10 && height > 10) {
-            filletPath.apply {
-                moveTo(10f, 0f)
-                lineTo(width - 10, 0f)
-                quadTo(width, 0f, width, 10f)
-                lineTo(width, height - 10)
-                quadTo(width, height, width - 10, height)
-                lineTo(10f, height)
-                quadTo(0f, height, 0f, height - 10)
-                lineTo(0f, 10f)
-                quadTo(0f, 0f, 10f, 0f)
-                close()
-            }
-        }
+//        if (width > 10 && height > 10) {
+//            filletPath.apply {
+//                moveTo(10f, 0f)
+//                lineTo(width - 10, 0f)
+//                quadTo(width, 0f, width, 10f)
+//                lineTo(width, height - 10)
+//                quadTo(width, height, width - 10, height)
+//                lineTo(10f, height)
+//                quadTo(0f, height, 0f, height - 10)
+//                lineTo(0f, 10f)
+//                quadTo(0f, 0f, 10f, 0f)
+//                close()
+//            }
+//        }
     }
 
     override fun onDraw(canvas: Canvas) {
