@@ -226,22 +226,22 @@ object ThemeConfig {
             }
             else -> {
                 val primary =
-                    getPrefInt(PreferKey.cPrimary, getCompatColor(R.color.md_brown_500))
+                    getPrefInt(PreferKey.cPrimary, getCompatColor(R.color.md_white_1000))
                 val accent =
-                    getPrefInt(PreferKey.cAccent, getCompatColor(R.color.md_red_600))
+                    getPrefInt(PreferKey.cAccent, getCompatColor(R.color.highlight))
                 var background =
-                    getPrefInt(PreferKey.cBackground, getCompatColor(R.color.md_grey_100))
+                    getPrefInt(PreferKey.cBackground, getCompatColor(R.color.md_white_1000))
                 if (!ColorUtils.isColorLight(background)) {
                     background = getCompatColor(R.color.md_grey_100)
                     putPrefInt(PreferKey.cBackground, background)
                 }
-                val bBackground =
-                    getPrefInt(PreferKey.cBBackground, getCompatColor(R.color.md_grey_200))
+                val bottomBackground =
+                    getPrefInt(PreferKey.cBBackground, getCompatColor(R.color.md_white_1000))
                 ThemeStore.editTheme(this)
                     .primaryColor(ColorUtils.withAlpha(primary, 1f))
                     .accentColor(ColorUtils.withAlpha(accent, 1f))
                     .backgroundColor(ColorUtils.withAlpha(background, 1f))
-                    .bottomBackground(ColorUtils.withAlpha(bBackground, 1f))
+                    .bottomBackground(ColorUtils.withAlpha(bottomBackground, 1f))
                     .apply()
             }
         }
