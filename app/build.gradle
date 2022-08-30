@@ -40,7 +40,8 @@ android {
         }
     }
     defaultConfig {
-        applicationId "io.legado.app"
+        applicationId "com.moriafly.legado"
+        // applicationId "io.legado.app"
         minSdkVersion 21
         targetSdkVersion 32
         versionCode 10000 + gitCommits
@@ -72,7 +73,8 @@ android {
             if (project.hasProperty("RELEASE_STORE_FILE")) {
                 signingConfig signingConfigs.myConfig
             }
-            applicationIdSuffix '.release'
+            // applicationIdSuffix '.release'
+            // applicationId "com.moriafly.legado"
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
