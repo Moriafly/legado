@@ -109,7 +109,7 @@ class SearchAdapter(context: Context, val callBack: CallBack) :
     private fun upLasted(binding: ItemSearchBinding, latestChapterTitle: String?) {
         binding.run {
             if (latestChapterTitle.isNullOrEmpty()) {
-                tvLasted.gone()
+                // tvLasted.gone()
             } else {
                 tvLasted.text =
                     context.getString(R.string.lasted_show, latestChapterTitle)
@@ -120,7 +120,7 @@ class SearchAdapter(context: Context, val callBack: CallBack) :
 
     private fun upKind(binding: ItemSearchBinding, kinds: List<String>) = binding.run {
         if (kinds.isEmpty()) {
-            llKind.gone()
+            // llKind.gone()
         } else {
             llKind.visible()
             llKind.setLabels(kinds)

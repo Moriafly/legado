@@ -63,7 +63,9 @@
             android:id="@+id/rv_bookshelf_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone" />
+            android:paddingHorizontal="13dp"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,7 +96,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_history_key"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingHorizontal="13dp" />
 
     </LinearLayout>
 

@@ -15,7 +15,7 @@ class LabelsBar @JvmOverloads constructor(
 
     private val unUsedViews = arrayListOf<TextView>()
     private val usedViews = arrayListOf<TextView>()
-    var textSize = 12f
+    var textSize = 11f
 
     fun setLabels(labels: Array<String>) {
         clear()
@@ -40,10 +40,10 @@ class LabelsBar @JvmOverloads constructor(
     fun addLabel(label: String) {
         val tv = if (unUsedViews.isEmpty()) {
             AccentBgTextView(context, null).apply {
-                setPadding(3.dpToPx(), 0, 3.dpToPx(), 0)
-                setRadius(2)
+                setPadding(4.dpToPx(), 1.dpToPx(), 4.dpToPx(), 1.dpToPx())
+                setRadius(4)
                 val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
-                lp.setMargins(0, 0, 2.dpToPx(), 0)
+                lp.setMargins(0, 2.dpToPx(), 4.dpToPx(), 2.dpToPx())
                 layoutParams = lp
                 text = label
                 maxLines = 1
