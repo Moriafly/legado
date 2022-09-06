@@ -8,11 +8,11 @@
         android:title="@string/about"
         app:iconSpaceReserved="false" />
 
-    <io.legado.app.lib.prefs.Preference
-        android:key="contributors"
-        android:summary="@string/contributors_summary"
-        android:title="@string/contributors"
-        app:iconSpaceReserved="false" />
+<!--    <io.legado.app.lib.prefs.Preference-->
+<!--        android:key="contributors"-->
+<!--        android:summary="@string/contributors_summary"-->
+<!--        android:title="@string/contributors"-->
+<!--        app:iconSpaceReserved="false" />-->
 
     <io.legado.app.lib.prefs.Preference
         android:key="update_log"
