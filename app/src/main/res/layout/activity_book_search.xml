@@ -45,15 +45,19 @@
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_bar">
+        app:layout_constraintTop_toBottomOf="@id/title_bar"
+        tools:visibility="visible">
 
         <TextView
             android:id="@+id/tv_book_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="6dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
             android:text="@string/bookshelf"
-            android:visibility="gone" />
+            android:textColor="@color/primaryText"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_bookshelf_search"
@@ -71,15 +75,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="6dp"
-                android:text="@string/searchHistory" />
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
+                android:text="@string/searchHistory"
+                android:textColor="@color/primaryText" />
 
             <TextView
                 android:id="@+id/tv_clear_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:text="@string/clear" />
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
+                android:text="@string/clear"
+                android:textColor="@color/secondaryText" />
 
         </LinearLayout>
 
@@ -95,9 +103,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:contentDescription="@string/stop"
         android:src="@drawable/ic_stop_black_24dp"
         android:visibility="invisible"
-        android:contentDescription="@string/stop"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
