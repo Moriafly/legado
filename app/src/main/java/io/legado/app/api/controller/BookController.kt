@@ -82,7 +82,7 @@ object BookController {
         this.bookUrl = bookUrl
         val bitmap = runBlocking {
             ImageProvider.cacheImage(book, src, bookSource)
-            ImageProvider.getImage(book, src, width)
+            ImageProvider.getImage(book, src, width)!!
         }
         return returnData.setData(bitmap)
     }
@@ -180,7 +180,7 @@ object BookController {
             ?: return returnData.setErrorMsg("未找到书源")
         try {
             content = runBlocking {
-                WebBook.getContentAwait(this, bookSource, book, chapter).let {
+                WebBook.getContentAwait(bookSource, book, chapter).let {
                     val contentProcessor = ContentProcessor.get(book.name, book.origin)
                     contentProcessor.getContent(book, chapter, it, includeTitle = false)
                         .joinToString("\n")
@@ -188,7 +188,7 @@ object BookController {
             }
             returnData.setData(content)
         } catch (e: Exception) {
-            returnData.setErrorMsg(e.msg)
+            returnData.setErrorMsg(e.stackTraceStr)
         }
         return returnData
     }

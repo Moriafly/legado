@@ -191,6 +191,8 @@ class ReadBookViewModel(application: Application) : BaseViewModel(application) {
             } else {
                 throw NoStackTraceException("进度同步未启用")
             }
+        }.onError {
+            AppLog.put("拉取阅读进度失败", it)
         }.onSuccess { progress ->
             if (progress.durChapterIndex < book.durChapterIndex ||
                 (progress.durChapterIndex == book.durChapterIndex
@@ -199,6 +201,7 @@ class ReadBookViewModel(application: Application) : BaseViewModel(application) {
                 alertSync?.invoke(progress)
             } else {
                 ReadBook.setProgress(progress)
+                AppLog.put("自动同步阅读进度成功")
             }
         }
 
@@ -216,7 +219,6 @@ class ReadBookViewModel(application: Application) : BaseViewModel(application) {
                 toc.first()
             }
             WebBook.getContentAwait(
-                this,
                 bookSource = source,
                 book = book,
                 bookChapter = toc[book.durChapterIndex],
@@ -252,11 +254,12 @@ class ReadBookViewModel(application: Application) : BaseViewModel(application) {
                     return@execute
                 }
             }
-            throw NoStackTraceException("自动换源失败")
+            throw NoStackTraceException("没有搜索到 ${name}(${author})")
         }.onStart {
             ReadBook.upMsg(context.getString(R.string.source_auto_changing))
         }.onError {
-            context.toastOnUi(it.msg)
+            AppLog.put("自动换源失败\n${it.localizedMessage}", it)
+            context.toastOnUi("自动换源失败\n${it.localizedMessage}")
         }.onFinally {
             ReadBook.upMsg(null)
         }

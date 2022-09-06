@@ -55,10 +55,9 @@ interface JsExtensions {
                 val analyzeUrl = AnalyzeUrl(urlStr, source = getSource())
                 analyzeUrl.getStrResponseAwait().body
             }.onFailure {
-                log("ajax(${urlStr}) error\n${it.stackTraceToString()}")
-                it.printOnDebug()
+                AppLog.put("ajax(${urlStr}) error\n${it.localizedMessage}", it)
             }.getOrElse {
-                it.msg
+                it.stackTraceStr
             }
         }
     }
@@ -91,10 +90,9 @@ interface JsExtensions {
             kotlin.runCatching {
                 analyzeUrl.getStrResponseAwait()
             }.onFailure {
-                log("connect(${urlStr}) error\n${it.stackTraceToString()}")
-                it.printOnDebug()
+                AppLog.put("connect(${urlStr}) error\n${it.localizedMessage}", it)
             }.getOrElse {
-                StrResponse(analyzeUrl.url, it.localizedMessage)
+                StrResponse(analyzeUrl.url, it.stackTraceStr)
             }
         }
     }
@@ -106,10 +104,9 @@ interface JsExtensions {
             kotlin.runCatching {
                 analyzeUrl.getStrResponseAwait()
             }.onFailure {
-                log("ajax($urlStr,$header) error\n${it.stackTraceToString()}")
-                it.printOnDebug()
+                AppLog.put("ajax($urlStr,$header) error\n${it.localizedMessage}", it)
             }.getOrElse {
-                StrResponse(analyzeUrl.url, it.localizedMessage)
+                StrResponse(analyzeUrl.url, it.stackTraceStr)
             }
         }
     }
@@ -436,13 +433,15 @@ interface JsExtensions {
     }
 
     /**
-     * js实现文件夹内所有文件读取
+     * js实现文件夹内所有文本文件读取
+     * @param path 文件夹相对路径
+     * @return 所有文件字符串换行连接
      */
-    fun getTxtInFolder(unzipPath: String): String {
-        if (unzipPath.isEmpty()) return ""
-        val unzipFolder = getFile(unzipPath)
+    fun getTxtInFolder(path: String): String {
+        if (path.isEmpty()) return ""
+        val folder = getFile(path)
         val contents = StringBuilder()
-        unzipFolder.listFiles().let {
+        folder.listFiles().let {
             if (it != null) {
                 for (f in it) {
                     val charsetName = EncodingDetect.getEncode(f)
@@ -452,7 +451,7 @@ interface JsExtensions {
                 contents.deleteCharAt(contents.length - 1)
             }
         }
-        FileUtils.delete(unzipFolder.absolutePath)
+        FileUtils.delete(folder.absolutePath)
         return contents.toString()
     }
 
@@ -1008,6 +1007,7 @@ interface JsExtensions {
      * @param key 密钥
      * @return 16进制字符串
      */
+    @Suppress("FunctionName")
     fun HMacHex(
         data: String,
         algorithm: String,
@@ -1024,6 +1024,7 @@ interface JsExtensions {
      * @param key 密钥
      * @return Base64字符串
      */
+    @Suppress("FunctionName")
     fun HMacBase64(
         data: String,
         algorithm: String,
